@@ -79,7 +79,9 @@ public class SeleniumGridExtras {
 
         List<ExecuteOSTask> tasks = new LinkedList<ExecuteOSTask>();
         for (String module : RuntimeConfig.getConfig().getActivatedModules()) {
-            tasks.add((ExecuteOSTask) Class.forName(module).newInstance());
+            if (RuntimeConfig.getConfig().checkIfModuleEnabled(module)) {
+                tasks.add((ExecuteOSTask) Class.forName(module).newInstance());
+            }
         }
 
         logger.debug(RuntimeConfig.getSeleniungGridExtrasHomePath());

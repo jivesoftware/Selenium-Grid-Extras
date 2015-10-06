@@ -391,8 +391,14 @@ public class Config {
         return JsonParserWrapper.prettyPrintString(object);
     }
 
+    /**
+     * A module is enabled if it's in the activated modules AND it's not in the disabled modules.
+     */
     public boolean checkIfModuleEnabled(String module) {
-        return getActivatedModules().contains(module);
+        if (!getActivatedModules().contains(module)) {
+            return false;
+        }
+        return getDisabledModules() == null || !getDisabledModules().contains(module);
     }
 
 
