@@ -65,9 +65,6 @@ public class SeleniumGridExtras {
     private static Logger logger = Logger.getLogger(SeleniumGridExtras.class);
 
     public static void main(String[] args) throws Exception {
-        final String filename = "log4j.properties";
-        PropertyConfigurator.configure(SeleniumGridExtras.class.getClassLoader().getResource(filename));
-        logger.info("Loaded Grid Logger from " + filename);
 
         RuntimeConfig.load(true);
 
